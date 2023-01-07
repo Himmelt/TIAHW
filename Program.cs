@@ -1,8 +1,13 @@
 ﻿using Siemens.Engineering;
 using Siemens.Engineering.HW;
 using Siemens.Engineering.HW.Features;
+using Siemens.Engineering.SW;
+using Siemens.Engineering.SW.Tags;
 using System;
+using System.IO;
 using System.Linq;
+using TiaOpennessHelper.Models.Block;
+using TiaOpennessHelper.XMLParser;
 
 namespace TIAHW
 {
@@ -10,24 +15,24 @@ namespace TIAHW
     {
         static void Main(string[] args)
         {
+            {
+                XmlParser parser = new XmlParser(@"D:\Samples\TG010R01_Zone_FB.xml");
+                BlockInformation info = (BlockInformation)parser.Parse();
+
+                foreach (var network in info.BlockNetworks)
+                {
+                    Console.WriteLine("        BlockNetwork Title: " + network.NetworkTitle.MultiLanguageTextItems["zh-CN"]);
+                }
+                return;
+            }
+
             try
             {
                 TiaPortal portal = TiaPortal.GetProcesses().First().Attach();
                 Project project = portal.Projects.First();
                 foreach (Device device in project.Devices)
                 {
-                    SetDeviceNameWithNum(device);
-                }
-                foreach (DeviceGroup group in project.DeviceGroups)
-                {
-                    foreach (Device device in group.Devices)
-                    {
-                        SetDeviceNameWithNum(device);
-                    }
-                }
-                foreach (Device device in project.UngroupedDevicesGroup.Devices)
-                {
-                    SetDeviceNameWithNum(device);
+                    CheckPLCBlocks(device);
                 }
             }
             catch (Exception e)
@@ -177,6 +182,33 @@ namespace TIAHW
                                 }
                             }
                             break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        static void CheckPLCBlocks(Device device)
+        {
+            foreach (DeviceItem item in device.DeviceItems)
+            {
+                if (item.Classification == DeviceItemClassifications.CPU)
+                {
+                    Console.WriteLine("Device: " + device.Name + " : " + device.TypeIdentifier);
+                    Console.WriteLine("    Item: " + item.Name + " : " + item.Classification);
+                    SoftwareContainer softwareContainer = item.GetService<SoftwareContainer>();
+                    if (softwareContainer != null)
+                    {
+                        PlcSoftware software = softwareContainer.Software as PlcSoftware;
+                        foreach (PlcTagTable block in software.TagTableGroup.TagTables)
+                        {
+                            if (block.Name.Equals("CONST"))
+                            {
+                                Console.WriteLine("    PlcTagTable: " + block.Name);
+                                block.Export(new FileInfo(string.Format(@"D:\Samples\{0}.xml", block.Name)), ExportOptions.WithDefaults);
+                                //break;
+                            }
                         }
                     }
                     break;

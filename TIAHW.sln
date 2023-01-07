@@ -4,17 +4,46 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TIAHW", "TIAHW.csproj", "{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE} = {9D4DD413-5B46-4212-8E2C-107D45B3CDBE}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiaOpennessHelper", "..\..\TiaPortalOpennessHelper\TiaOpennessHelper\TiaOpennessHelper.csproj", "{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Debug|x64.Build.0 = Debug|Any CPU
+		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Debug|x86.Build.0 = Debug|Any CPU
 		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Release|x64.ActiveCfg = Release|Any CPU
+		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Release|x64.Build.0 = Release|Any CPU
+		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Release|x86.ActiveCfg = Release|Any CPU
+		{899E9E57-6BC5-4087-AB53-9B8CF911BEB3}.Release|x86.Build.0 = Release|Any CPU
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Debug|x64.ActiveCfg = Debug|x64
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Debug|x64.Build.0 = Debug|x64
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Debug|x86.ActiveCfg = Debug|x86
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Debug|x86.Build.0 = Debug|x86
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Release|x64.ActiveCfg = Release|x64
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Release|x64.Build.0 = Release|x64
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Release|x86.ActiveCfg = Release|x86
+		{9D4DD413-5B46-4212-8E2C-107D45B3CDBE}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
